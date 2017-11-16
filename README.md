@@ -1,4 +1,4 @@
-# README #
+# Build wordpress project with composer
 
 ### Setup
     composer install
