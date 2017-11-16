@@ -1,0 +1,21 @@
+#!/bin/bash
+
+case $1 in
+	start)
+	    echo "start ..."
+		docker-compose -f docker-compose.yml up -d
+		break
+		;;
+	ssh)
+		docker exec -it web-wordpress bash
+		break
+		;;
+	stop)
+        docker stop web-wordpress
+        docker stop mysql-wordpress
+        break
+        ;;
+	*)
+		echo "Sorry, I don't understand"
+		;;
+  esac
