@@ -1,39 +1,33 @@
 {
-  "version": "1.0",
-  "name": "composer-wordpress",
-  "description": "Project power by wordpress",
-  "authors": [
-    {
-      "name": "Gia Hoang Nguyen",
-      "email": "dev.hoanggia@gmail.com",
-      "role": "Developer"
+  "name": "vendor/wordpress-with-composer",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Vendor\\WordpressWithComposer\\": "src/"
     }
-  ],
-  "repositories": [
-    {
-      "type":"composer",
-      "url":"http://wpackagist.org"
-    }
-  ],
+  },
   "require": {
-    "php": ">=5.4",
-    "vlucas/phpdotenv": "^2.2",
-    "johnpbloch/wordpress": "4.7",
-    "wpackagist-plugin/query-monitor": "2.13.2",
-    "wpackagist-plugin/debug-bar": "0.8.4",
-    "wpackagist-plugin/wp-smushit": "2.3.1",
-    "wpackagist-plugin/wp-super-cache": "1.4.8",
-    "wpackagist-plugin/all-in-one-wp-security-and-firewall": "4.1.0",
-    "wpackagist-plugin/wp-mail-smtp": "0.9.6",
-    "wpackagist-plugin/contact-form-7": "4.4.2"
+    "roots/wordpress": "6.1"
   },
   "extra": {
     "installer-paths": {
-      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
-    }
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
+        "wpackagist-plugin/akismet",
+        "wpackagist-plugin/turn-comments-off"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "web/wp"
   },
   "config": {
-    "secure-http": false
+    "allow-plugins": {
+      "roots/wordpress-core-installer": true
+    }
   }
 }

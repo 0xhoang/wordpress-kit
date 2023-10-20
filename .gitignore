@@ -1,12 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 vendor
-wordpress
-
-
-# Don’t ignore themes dir, but ignore everything inside
-!/wp-content/themes
-/wp-content/themes/*
-
-# Don’t ignore evolve-child theme
-!/wp-content/themes/evolve-child
+web/wp
