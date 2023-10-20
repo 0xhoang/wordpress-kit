@@ -6,15 +6,30 @@
       "Vendor\\WordpressWithComposer\\": "src/"
     }
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
   "require": {
-    "roots/wordpress": "6.1"
+    "composer/installers": "^2.2",
+    "vlucas/phpdotenv": "^5.5",
+    "roots/wordpress": "6.1",
+    "roots/wp-config": "1.0.0",
+    "wpackagist-plugin/akismet": "5.3",
+    "wpackagist-theme/twentytwentythree": "^1.0"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "extra": {
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": [
-        "type:wordpress-muplugin",
-        "wpackagist-plugin/akismet",
-        "wpackagist-plugin/turn-comments-off"
+        "type:wordpress-muplugin"
       ],
       "web/app/plugins/{$name}/": [
         "type:wordpress-plugin"
@@ -26,8 +41,16 @@
     "wordpress-install-dir": "web/wp"
   },
   "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
     "allow-plugins": {
-      "roots/wordpress-core-installer": true
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true
     }
+  },
+  "scripts": {
+    "test": [
+      "phpcs"
+    ]
   }
 }
